@@ -5,11 +5,13 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final String text;
   String? image;
+  final void Function()? onPressed;
   CustomButton({
     this.image,
     super.key,
     required this.color,
     required this.text,
+    required this.onPressed,
   });
 
   @override
@@ -23,7 +25,7 @@ class CustomButton extends StatelessWidget {
           side: BorderSide(
             color: image == null ? orange : white,
           )),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
