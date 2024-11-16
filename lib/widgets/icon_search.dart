@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:notes_application/widgets/custom_search_delegate.dart';
 
 class IconSearch extends StatelessWidget {
   const IconSearch({
@@ -11,9 +12,9 @@ class IconSearch extends StatelessWidget {
     return Align(
       alignment: Alignment.topRight,
       child: GestureDetector(
-        onTap: () {
-          
+        onTap: () {  
           AudioPlayer().play(AssetSource('sounds/button.mp3'),);
+          showSearch(context: context, delegate: CustomSearchDelegate());
         },
         child: CircleAvatar(
           radius: 39,

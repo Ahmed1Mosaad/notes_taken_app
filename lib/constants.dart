@@ -10,12 +10,16 @@ const Color white = Color(0xFFFFFFFF);
 const Color gold = Color.fromARGB(255, 206, 155, 68);
 
 const List<Color> colorsList = [
-  Colors.brown,
-  yellow,
-  orange,
+  Color.fromARGB(255, 244, 154, 121),
+  Color.fromARGB(255, 252, 230, 140),
+  Color.fromARGB(255, 241, 180, 160),
   blue,
-  Color.fromARGB(255, 206, 155, 68),
-  green,
+  Color.fromARGB(255, 230, 199, 145),
+  Color.fromARGB(255, 194, 216, 169),
   lightYellow,
   white,
 ];
+
+const String NoteBox2 = 'NoteBox2';
+const String NoteBox1 = 'NoteBox1';
+

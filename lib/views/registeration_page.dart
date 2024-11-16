@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
+import 'package:notes_application/helpers/show_snack_bar_method.dart';
 import 'package:notes_application/widgets/custom_button.dart';
 import 'package:notes_application/widgets/custom_text_form_field.dart';
 
@@ -158,13 +160,43 @@ class _RegisterPageState extends State<RegisterPage> {
                     flex: 5,
                   ),
                   CustomButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                       } else {
                         setState(() {
                           mode = AutovalidateMode.always;
                         });
+                      }
+
+                      try {
+                        FirebaseAuth auth = FirebaseAuth.instance;
+                        UserCredential userCredential =
+                            await auth.createUserWithEmailAndPassword(
+                                email: email!.trim(), password: password!);
+
+                        showSnackBarMethod(context,
+                            text: 'Successful Sign Up',
+                            color: Colors.cyan,
+                            colorBorder: Colors.cyan);
+                            Navigator.of(context).pushNamed('LoginPage');
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'weak-password') {
+                          showSnackBarMethod(context,
+                              text: '❗ The password provided is too weak.',
+                              color: const Color.fromARGB(255, 241, 110, 100),
+                              colorBorder:
+                                  const Color.fromARGB(255, 190, 19, 7));
+                        } else if (e.code == 'email-already-in-use') {
+                          showSnackBarMethod( context,
+                              text:
+                                  '❗The account already exists for that email.',
+                              color: const Color.fromARGB(255, 241, 110, 100),
+                              colorBorder:
+                                  const Color.fromARGB(255, 190, 19, 7));
+                        }
+                      } catch (e) {
+                        print(e);
                       }
                     },
                     color: orange,

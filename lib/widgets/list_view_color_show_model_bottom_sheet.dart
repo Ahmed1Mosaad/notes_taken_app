@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_application/constants.dart';
-
+import 'package:notes_application/cubits/NoteForHomePage/addNoteCubit/add_note_cubit.dart';
 
 class ListViewColorsBottomSheet extends StatefulWidget {
-  const ListViewColorsBottomSheet({
+  ListViewColorsBottomSheet({
     super.key,
   });
 
   @override
-  State<ListViewColorsBottomSheet> createState() => _ListViewColorsBottomSheetState();
+  State<ListViewColorsBottomSheet> createState() =>
+      _ListViewColorsBottomSheetState();
 }
 
 class _ListViewColorsBottomSheetState extends State<ListViewColorsBottomSheet> {
@@ -28,6 +30,7 @@ class _ListViewColorsBottomSheetState extends State<ListViewColorsBottomSheet> {
           onTap: () {
             setState(() {
               isSelectedIndex = index;
+              BlocProvider.of<AddNoteCubit>(context).color = colorsList[index];
             });
           },
           child: isSelectedIndex == index

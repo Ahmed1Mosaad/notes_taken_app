@@ -1,16 +1,18 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
+import 'package:notes_application/models/container_item_model.dart';
 import 'package:notes_application/widgets/two_lines.dart';
 
 class ContentNote extends StatelessWidget {
-  const ContentNote({super.key});
+  final ContainerItemModel model;
+  const ContentNote({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: lightYellow,
+        backgroundColor: Color(model.color),
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -22,7 +24,7 @@ class ContentNote extends StatelessWidget {
               size: 35,
             )),
       ),
-      backgroundColor: lightYellow,
+      backgroundColor: Color(model.color),
       body: Column(
         children: [
           const Spacer(
@@ -39,42 +41,44 @@ class ContentNote extends StatelessWidget {
                   height: 550,
                   color: Colors.black,
                   // .withOpacity(.062),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Center(
                             child: TwoLines(
-                          color: lightYellow,
+                          color: Color(model.color),
                         )),
-                        Spacer(),
+                        const Spacer(),
                         Center(
                           child: Text(
-                            'My Lectures',
-                            style: TextStyle(
+                            model.title,
+                            style: const TextStyle(
                                 color: gold,
                                 fontSize: 33,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Center(
+                        Align(
+                          alignment: Alignment.topLeft,
                           child: Text(
-                            'Content Content ContenlightYellow,t Content Content Content Content Content Content Content Content Content ',
-                            style: TextStyle(color: lightYellow, fontSize: 16),
+                            model.subTitle,
+                            style: const TextStyle(
+                                color: lightYellow, fontSize: 16),
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 5,
                         ),
                         Padding(
-                            padding: EdgeInsets.only(right: 12),
+                            padding: const EdgeInsets.only(right: 12),
                             child: Text(
-                              '31-3-2001',
-                              style: TextStyle(
+                              model.date,
+                              style: const TextStyle(
                                   color: Color.fromARGB(255, 203, 210, 218)),
                             )),
                       ],
@@ -84,7 +88,7 @@ class ContentNote extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 2,
           ),
         ],

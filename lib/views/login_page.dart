@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
+import 'package:notes_application/helpers/show_snack_bar_method.dart';
 import 'package:notes_application/widgets/custom_button.dart';
 import 'package:notes_application/widgets/custom_text_form_field.dart';
 
@@ -133,13 +135,39 @@ class _LoginPageState extends State<LoginPage> {
                     flex: 4,
                   ),
                   CustomButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
                       } else {
                         setState(() {
                           mode = AutovalidateMode.always;
                         });
+                      }
+
+                      try {
+                        FirebaseAuth auth = FirebaseAuth.instance;
+                        UserCredential userCredential =
+                            await auth.signInWithEmailAndPassword(
+                                email: email!, password: password!);
+                        showSnackBarMethod(context,
+                            text: 'Successful Sign Up',
+                            color: Colors.cyan,
+                            colorBorder: Colors.cyan);
+                        Navigator.of(context).pushNamed('HomePage');
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          showSnackBarMethod(context,
+                              text: '❗ No user found for that email.',
+                              color: const Color.fromARGB(255, 241, 110, 100),
+                              colorBorder:
+                                  const Color.fromARGB(255, 190, 19, 7));
+                        } else if (e.code == 'wrong-password') {
+                          showSnackBarMethod(context,
+                              text: '❗ Wrong password provided for that user.',
+                              color: const Color.fromARGB(255, 241, 110, 100),
+                              colorBorder:
+                                  const Color.fromARGB(255, 190, 19, 7));
+                        }
                       }
                     },
                     color: orange,
@@ -199,11 +227,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('RegisterPage');
-                          },
-                          child: Text('Sign Up'),
-                          style: TextButton.styleFrom(foregroundColor: orange))
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('RegisterPage');
+                        },
+                        style: TextButton.styleFrom(foregroundColor: orange),
+                        child: Text('Sign Up'),
+                      )
                     ],
                   ),
                   const Spacer(
