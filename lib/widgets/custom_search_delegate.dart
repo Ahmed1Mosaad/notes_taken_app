@@ -8,39 +8,35 @@ import 'package:notes_application/widgets/container_card.dart';
 // abstact class كل حاجه عشان  هو  SearchDelegate من ال  extends جديد بي   class اضطرنا الى استخدام
 class CustomSearchDelegate extends SearchDelegate {
   ContainerItemModel? selectedModel;
+  List<ContainerItemModel>? modelList;
+  List<ContainerItemModel>? filteredList;
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(appBarTheme: AppBarTheme(
-      color: black,
-    ),
-    iconButtonTheme: IconButtonThemeData(
-      style:ElevatedButton.styleFrom(
-        iconColor: white.withOpacity(.6)
+    return ThemeData(
+      appBarTheme: AppBarTheme(
+        color: black,
       ),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      fillColor: white,
-      hintStyle: TextStyle(color: white.withOpacity(.6)),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: orange.withOpacity(.8)
-        )
+      iconButtonTheme: IconButtonThemeData(
+        style: ElevatedButton.styleFrom(iconColor: white.withOpacity(.6)),
       ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: orange.withOpacity(.8)
-        )
+      inputDecorationTheme: InputDecorationTheme(
+        fillColor: white,
+        hintStyle: TextStyle(color: white.withOpacity(.6)),
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: orange.withOpacity(.8))),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: orange.withOpacity(.8))),
       ),
-    ),
-    scaffoldBackgroundColor:black,
-    
+      scaffoldBackgroundColor: black,
     );
   }
+
   @override
   // TODO: implement searchFieldStyle
   TextStyle? get searchFieldStyle {
     return TextStyle(color: white);
   }
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     /* 
@@ -70,8 +66,7 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<ContainerItemModel>? modelList =
-        BlocProvider.of<NotesCubit>(context).modelList;
+    modelList = BlocProvider.of<NotesCubit>(context).modelList;
     // فاضيه مكتبتش فيها حاجه textField فى حالة كانت ال
     // كلها list بتحط ال
     if (query == '') {
@@ -82,23 +77,22 @@ class CustomSearchDelegate extends SearchDelegate {
               padding: const EdgeInsets.all(6.0),
               child: InkWell(
                 onTap: () {
-                  query = modelList[index].title;
-                  selectedModel = modelList[index];
+                  query = modelList![index].title;
+                  selectedModel = modelList![index];
                   showResults(context);
                 },
                 child: Card(
                     color: black,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Colors.white.withOpacity(.2),
-                    )
-                  ),
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                      color: Colors.white.withOpacity(.2),
+                    )),
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        '${modelList[index].title}',
+                        '${modelList![index].title}',
                         style: TextStyle(
-                          color: Color(modelList[index].color),
+                          color: Color(modelList![index].color),
                           fontSize: 20,
                         ),
                       ),
@@ -108,33 +102,32 @@ class CustomSearchDelegate extends SearchDelegate {
           });
     } else {
       // variable بنرميه ف  (query) textField لو بيبدأ باول حرف كتبته فى ال  item هنا بنحدد شرط وهو ان ال
-      List<ContainerItemModel> filteredList = modelList!.where((item) {
+      filteredList = modelList!.where((item) {
         return item.title.startsWith(query);
       }).toList();
       return ListView.builder(
-          itemCount: filteredList.length,
+          itemCount: filteredList!.length,
           itemBuilder: (conetxt, index) {
             return Padding(
               padding: const EdgeInsets.all(6.0),
               child: InkWell(
                 onTap: () {
-                  query = filteredList[index].title;
-                  selectedModel = filteredList[index];
+                  query = filteredList![index].title;
+                  selectedModel = filteredList![index];
                   showResults(context);
                 },
                 child: Card(
                   color: black,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Colors.white.withOpacity(.2),
-                    )
-                  ),
+                      side: BorderSide(
+                    color: Colors.white.withOpacity(.2),
+                  )),
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      '${filteredList[index].title}',
+                      '${filteredList![index].title}',
                       style: TextStyle(
-                        color: Color(filteredList[index].color),
+                        color: Color(filteredList![index].color),
                         fontSize: 20,
                       ),
                     ),
@@ -148,21 +141,27 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    selectedModel = modelList!.firstWhere(
+      (item) => item.title.contains(query),
+      orElse: () =>
+          ContainerItemModel(title: '', subTitle: '', color: 0, date: ''),
+    );
     if (selectedModel == null) {
-      return Center(
-        child: Text('No Data Avaliable',style: TextStyle(color: white),),
+      return const Center(
+        child: Text(
+          'No Data Avaliable',
+          style: TextStyle(color: white),
+        ),
       );
     } else {
-      return Container(
-        child: Column(
-          children: [
-            Spacer(),
-            ContainerCard(model: selectedModel!),
-            Spacer(
-              flex: 15,
-            ),
-          ],
-        ),
+      return Column(
+        children: [
+          const Spacer(),
+          ContainerCard(model: selectedModel!),
+          const Spacer(
+            flex: 12,
+          ),
+        ],
       );
     }
   }

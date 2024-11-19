@@ -7,7 +7,6 @@ import 'package:notes_application/cubits/NoteForCard/NotesCardCubit/notes_card_c
 import 'package:notes_application/cubits/NoteForHomePage/NotesCubit/notes_cubit.dart';
 import 'package:notes_application/firebase_options.dart';
 import 'package:notes_application/models/container_item_model.dart';
-import 'package:notes_application/views/edit_note_screen.dart';
 import 'package:notes_application/views/home_page.dart';
 import 'package:notes_application/views/login_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -19,7 +18,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final directory = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(directory.path);
-Hive.registerAdapter(ContainerItemModelAdapter());
+  Hive.registerAdapter(ContainerItemModelAdapter());
   await Hive.openBox<ContainerItemModel>(NoteBox1);
   await Hive.openBox<ContainerItemModel>(NoteBox2);
   Bloc.observer = MyBlocObserver();
@@ -42,17 +41,21 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: black,
             fontFamily: 'Lufga',
             brightness: Brightness.dark),
-        home: HomePage(),
+        home: const LoginPage(),
         routes: {
           'LoginPage': (context) {
-            return LoginPage();
+            return const LoginPage();
           },
           'RegisterPage': (conetxt) {
-            return RegisterPage();
+            return const RegisterPage();
           },
-          'HomePage': (context) => HomePage(),
+          'HomePage': (context) => const HomePage(),
         },
       ),
     );
   }
 }
+
+/* 
+TODO: build your note application 
+*/

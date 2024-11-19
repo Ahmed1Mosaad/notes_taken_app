@@ -43,7 +43,7 @@ class EditNoteScreen extends StatelessWidget {
                         model.subTitle = subTitle ?? model.subTitle;
                         model.color =
                             BlocProvider.of<AddNoteCubit>(context).color.value;
-
+                            model.save();
                         BlocProvider.of<NotesCubit>(context).getNotes();
 
                         Navigator.of(context).pop();

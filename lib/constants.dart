@@ -17,7 +17,8 @@ const List<Color> colorsList = [
   Color.fromARGB(255, 230, 199, 145),
   Color.fromARGB(255, 194, 216, 169),
   lightYellow,
-  white,
+  Color.fromARGB(255, 240, 136, 136),
+  Color.fromARGB(255, 166, 238, 171),
 ];
 
 const String NoteBox2 = 'NoteBox2';

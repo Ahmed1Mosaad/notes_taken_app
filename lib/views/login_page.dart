@@ -1,7 +1,12 @@
+import 'package:google_sign_in/google_sign_in.dart'; // استيراد مكتبة Google Sign-In
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
 import 'package:notes_application/helpers/show_snack_bar_method.dart';
+import 'package:notes_application/helpers/sign_in_with_facebook.dart';
+import 'package:notes_application/helpers/sign_in_with_google.dart';
+import 'package:notes_application/views/home_page.dart';
 import 'package:notes_application/widgets/custom_button.dart';
 import 'package:notes_application/widgets/custom_text_form_field.dart';
 
@@ -80,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                       String pattern =
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
                       RegExp regExp = RegExp(pattern);
-                      if (value!.isEmpty || value == null) {
+                      if (value!.isEmpty) {
                         return 'Please Enter your Email';
                       } else if (!regExp.hasMatch(value)) {
                         return 'please Enter a valid Email';
@@ -200,7 +205,9 @@ class _LoginPageState extends State<LoginPage> {
                     flex: 5,
                   ),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      signInWithGoogle(context);
+                    },
                     color: black,
                     text: 'Continue with google',
                     image: 'assets/images/google.png',
@@ -209,10 +216,12 @@ class _LoginPageState extends State<LoginPage> {
                     flex: 5,
                   ),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      signInWithFacebook();
+                    },
                     color: black,
-                    text: 'Continue with apple',
-                    image: 'assets/images/apple-logo.png',
+                    text: 'Continue with Facebook',
+                    image: 'assets/images/facebook.png',
                   ),
                   const Spacer(
                     flex: 4,

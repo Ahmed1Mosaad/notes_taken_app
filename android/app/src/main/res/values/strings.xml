@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Facebook App ID and Client Token for Facebook Login -->
+    <string name="facebook_app_id">1089207069223688</string>
+    <string name="facebook_client_token">e91ecb761286c217ccb600d22e7cff30</string>
+    <string name="fb_login_protocol_scheme">fb1089207069223688</string>
+    <string name="app_name">Notes Application</string>
+</resources>
