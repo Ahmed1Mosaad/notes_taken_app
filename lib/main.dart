@@ -11,6 +11,7 @@ import 'package:notes_application/views/home_page.dart';
 import 'package:notes_application/views/login_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_application/views/registeration_page.dart';
+import 'package:notes_application/views/splash_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: black,
             fontFamily: 'Lufga',
             brightness: Brightness.dark),
-        home: const LoginPage(),
+        home: const SplashView(),
         routes: {
           'LoginPage': (context) {
             return const LoginPage();
@@ -56,6 +57,5 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/* 
-TODO: build your note application 
-*/
+
+// TODO: build your note application 
