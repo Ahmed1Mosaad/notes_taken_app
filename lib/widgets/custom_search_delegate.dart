@@ -13,7 +13,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-      appBarTheme: AppBarTheme(
+      appBarTheme:const AppBarTheme(
         color: black,
       ),
       iconButtonTheme: IconButtonThemeData(
@@ -34,7 +34,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   // TODO: implement searchFieldStyle
   TextStyle? get searchFieldStyle {
-    return TextStyle(color: white);
+    return const TextStyle(color: white);
   }
 
   @override
@@ -49,7 +49,7 @@ class CustomSearchDelegate extends SearchDelegate {
             // query=controller او يدخل اى قيمه على حسب حيث ان ال  query او ال  TextField يصفرلى ال  button اول لما ادوس على ال
             query = '';
           },
-          icon: Icon(Icons.close))
+          icon:const Icon(Icons.close))
     ];
   }
 
@@ -61,7 +61,7 @@ class CustomSearchDelegate extends SearchDelegate {
           //search فى حالة غلق ال  close نستخدم
           close(context, null);
         },
-        icon: Icon(Icons.arrow_back));
+        icon:const Icon(Icons.arrow_back));
   }
 
   @override

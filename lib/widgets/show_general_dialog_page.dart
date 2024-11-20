@@ -10,7 +10,7 @@ import 'package:notes_application/widgets/custom_text_field.dart';
 import 'package:notes_application/widgets/list_view_colors_of_show_general_daolog.dart';
 
 class ShowGeneralDialogPage extends StatefulWidget {
-  ShowGeneralDialogPage({super.key});
+  const ShowGeneralDialogPage({super.key});
 
   @override
   State<ShowGeneralDialogPage> createState() => _ShowGeneralDialogPageState();
@@ -52,7 +52,7 @@ class _ShowGeneralDialogPageState extends State<ShowGeneralDialogPage> {
                           height: 40,
                         ),
                         Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            padding:const EdgeInsets.symmetric(horizontal: 8),
                             child: Material(
                                 color: black,
                                 child: Column(

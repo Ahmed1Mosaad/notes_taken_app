@@ -43,7 +43,7 @@ class EditNoteScreen extends StatelessWidget {
                         model.subTitle = subTitle ?? model.subTitle;
                         model.color =
                             BlocProvider.of<AddNoteCubit>(context).color.value;
-                            model.save();
+                        model.save();
                         BlocProvider.of<NotesCubit>(context).getNotes();
 
                         Navigator.of(context).pop();
@@ -82,7 +82,8 @@ class EditNoteScreen extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 20),
-                    SizedBox(height: 80, child: ListViewColorsBottomSheet()),
+                    const SizedBox(
+                        height: 80, child: ListViewColorsBottomSheet()),
                     const SizedBox(height: 20),
                   ],
                 )

@@ -63,20 +63,20 @@ class _HomePageState extends State<HomePage> {
                   child: CustomScrollView(
                     slivers: [
                       const SliverToBoxAdapter(
-                          child: const SizedBox(height: 30)),
+                          child:  SizedBox(height: 30)),
                       // !       icon search
-                      SliverToBoxAdapter(child: IconSearch()),
+                    const  SliverToBoxAdapter(child: IconSearch()),
 
                       // !       My Notes
                       const SliverToBoxAdapter(
-                        child: const Text('My',
+                        child:  Text('My',
                             style: TextStyle(
                                 fontSize: 55,
                                 fontWeight: FontWeight.w400,
                                 color: white)),
                       ),
                       const SliverToBoxAdapter(
-                        child: const Text('Notes',
+                        child:  Text('Notes',
                             style: TextStyle(
                                 fontSize: 55,
                                 fontWeight: FontWeight.w400,
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Expanded(
                               child: Padding(
-                                  padding: const EdgeInsets.only(left: 3),
+                                  padding:  EdgeInsets.only(left: 3),
                                   child: CardItem(
                                       textTitle: 'Image Notes',
                                       coloredItem: yellow)),

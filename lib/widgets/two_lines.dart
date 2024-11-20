@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_application/constants.dart';
-
 
 class TwoLines extends StatelessWidget {
   final Color color;

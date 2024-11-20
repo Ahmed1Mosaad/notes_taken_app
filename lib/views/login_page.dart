@@ -1,12 +1,10 @@
-import 'package:google_sign_in/google_sign_in.dart'; // استيراد مكتبة Google Sign-In
+ // استيراد مكتبة Google Sign-In
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
 import 'package:notes_application/helpers/show_snack_bar_method.dart';
 import 'package:notes_application/helpers/sign_in_with_facebook.dart';
 import 'package:notes_application/helpers/sign_in_with_google.dart';
-import 'package:notes_application/views/home_page.dart';
 import 'package:notes_application/widgets/custom_button.dart';
 import 'package:notes_application/widgets/custom_text_form_field.dart';
 
@@ -240,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.of(context).pushNamed('RegisterPage');
                         },
                         style: TextButton.styleFrom(foregroundColor: orange),
-                        child: Text('Sign Up'),
+                        child: const Text('Sign Up'),
                       )
                     ],
                   ),

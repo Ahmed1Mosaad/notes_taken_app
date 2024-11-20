@@ -4,7 +4,7 @@ import 'package:notes_application/constants.dart';
 import 'package:notes_application/cubits/NoteForHomePage/addNoteCubit/add_note_cubit.dart';
 
 class ListViewColorsBottomSheet extends StatefulWidget {
-  ListViewColorsBottomSheet({
+const  ListViewColorsBottomSheet({
     super.key,
   });
 
@@ -20,7 +20,7 @@ class _ListViewColorsBottomSheetState extends State<ListViewColorsBottomSheet> {
   Widget build(BuildContext context) {
     return ListView.separated(
       separatorBuilder: (context, index) {
-        return SizedBox(
+        return const SizedBox(
           width: 4,
         );
       },

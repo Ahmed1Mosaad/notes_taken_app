@@ -69,7 +69,7 @@ class _SplashViewState extends State<SplashView>
   void _delayAndNavigationToNaxtView() {
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return LoginPage();
+        return const LoginPage();
       }));
     });
   }
@@ -135,7 +135,7 @@ class _SplashPageState extends State<SplashPage> {
   void _delayAndNavigationToNaxtView() {
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return LoginPage();
+        return const LoginPage();
       }));
     });
   }

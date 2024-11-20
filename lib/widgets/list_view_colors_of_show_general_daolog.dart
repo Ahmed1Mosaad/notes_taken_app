@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_application/constants.dart';
 import 'package:notes_application/cubits/NoteForCard/addNoteCardCubit/add_note_card_cubit.dart';
-import 'package:notes_application/cubits/NoteForHomePage/addNoteCubit/add_note_cubit.dart';
 
 class ListViewColors extends StatefulWidget {
   const ListViewColors({

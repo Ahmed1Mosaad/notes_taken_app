@@ -75,12 +75,12 @@ class _ShowModalBottomSheetState extends State<ShowModalBottomSheet> {
                             },
                           ),
                           const SizedBox(height: 20),
-                          SizedBox(
+                        const  SizedBox(
                               height: 80, child: ListViewColorsBottomSheet()),
                           const SizedBox(height: 20),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(400, 40),
+                                  fixedSize:const Size(400, 40),
                                   shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(8)))),

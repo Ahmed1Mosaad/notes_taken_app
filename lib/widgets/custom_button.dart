@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   String? image;
   final void Function()? onPressed;
-  CustomButton({
+   CustomButton({
     this.image,
     super.key,
     required this.color,
@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           backgroundColor: color,
-          fixedSize: Size(500, 60),
+          fixedSize:const Size(500, 60),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           side: BorderSide(

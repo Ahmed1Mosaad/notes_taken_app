@@ -34,7 +34,7 @@ class _CustomTextContainerState extends State<CustomTextContainer> {
           width: double.infinity,
           height: 60,
           child: ListTile(
-            contentPadding: EdgeInsets.all(0),
+            contentPadding:const EdgeInsets.all(0),
             leading: isSelectedTextNote
                 ? IconButton(
                     onPressed: () {
@@ -47,7 +47,7 @@ class _CustomTextContainerState extends State<CustomTextContainer> {
                     color: black,
                   )
                 : Container(
-                    margin: EdgeInsets.only(left: 8),
+                    margin:const EdgeInsets.only(left: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.black.withOpacity(.3),

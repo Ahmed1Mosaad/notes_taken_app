@@ -27,7 +27,7 @@ class _TapItemState extends State<TapItem> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               border: Border.all(

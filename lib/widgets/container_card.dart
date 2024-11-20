@@ -1,8 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_application/constants.dart';
-import 'package:notes_application/cubits/NoteForHomePage/NotesCubit/notes_cubit.dart';
 import 'package:notes_application/models/container_item_model.dart';
 import 'package:notes_application/views/content_note.dart';
 import 'package:notes_application/views/edit_note_screen.dart';
@@ -58,7 +56,7 @@ class _ContainerCardState extends State<ContainerCard> {
                           color: black,
                         )
                       : Container(
-                          margin: EdgeInsets.only(left: 8),
+                          margin: const EdgeInsets.only(left: 8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.black.withOpacity(.3),
@@ -105,7 +103,7 @@ class _ContainerCardState extends State<ContainerCard> {
                             );
                           }));
                         },
-                        icon: Icon(Icons.edit),
+                        icon: const Icon(Icons.edit),
                         color: black,
                       ))),
               Padding(

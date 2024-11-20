@@ -38,7 +38,7 @@ class _IconHeartAddState extends State<IconHeartAdd> {
           )),
           child: child,
         );},
-                      transitionDuration: Duration(microseconds:500),
+                      transitionDuration:const Duration(microseconds:500),
                       barrierColor: Colors.black.withOpacity(.2),
                         barrierLabel: '',
                         barrierDismissible: true,
