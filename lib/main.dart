@@ -24,11 +24,11 @@ void main() async {
   await Hive.openBox<ContainerItemModel>(NoteBox2);
   Bloc.observer = MyBlocObserver();
 
-  runApp(const MyApp());
+  runApp(const NoteApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NoteApp extends StatelessWidget {
+  const NoteApp({super.key});
   @override
   Widget build(BuildContext conetxt) {
     return MultiBlocProvider(
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 
 // TODO: build your note application 
