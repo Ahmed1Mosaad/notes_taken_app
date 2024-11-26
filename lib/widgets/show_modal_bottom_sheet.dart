@@ -87,8 +87,8 @@ class _ShowModalBottomSheetState extends State<ShowModalBottomSheet> {
                               onPressed: () {
                                 BlocProvider.of<AddNoteCubit>(context).addNote(
                                     ContainerItemModel(
-                                        title: title!,
-                                        subTitle: subTitle!,
+                                        title: title ?? "",
+                                        subTitle: subTitle ?? "",
                                         color: BlocProvider.of<AddNoteCubit>(
                                                 context)
                                             .color
