@@ -39,7 +39,8 @@ Follow these steps to run the app on your local machine:
 3. Run the application:
    ```bash
    flutter run
-   
+### Screenshots
+
   ![notes_taken_app/screenshots.png](https://github.com/Ahmed1Mosaad/notes_taken_app/blob/main/screenshots.png)
   
   Contributions
