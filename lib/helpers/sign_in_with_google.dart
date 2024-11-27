@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
  Future<void> signInWithGoogle(BuildContext context) async {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
-    await googleSignIn.signOut();
 
     // خطوة 1: بدء تدفق المصادقة
     // TODO: للمستخدم Google  تظهر شاشة اختيار حساب

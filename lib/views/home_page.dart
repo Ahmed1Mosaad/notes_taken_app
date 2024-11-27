@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_application/constants.dart';
 import 'package:notes_application/cubits/NoteForHomePage/NotesCubit/notes_cubit.dart';
 import 'package:notes_application/cubits/NoteForHomePage/NotesCubit/notes_states.dart';
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                   });
             },
             shape:
-                const CircleBorder(side: BorderSide(color: Colors.tealAccent)),
+            const CircleBorder(side: BorderSide(color: Colors.tealAccent)),
             backgroundColor: Colors.tealAccent,
             child: const Icon(
               Icons.add,
@@ -65,7 +66,13 @@ class _HomePageState extends State<HomePage> {
                       const SliverToBoxAdapter(
                           child:  SizedBox(height: 30)),
                       // !       icon search
-                    const  SliverToBoxAdapter(child: IconSearch()),
+                    const  SliverToBoxAdapter(child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconSearch(icon: FontAwesomeIcons.leftLong,),
+                        IconSearch(icon: Icons.search,),
+                      ],
+                    )),
 
                       // !       My Notes
                       const SliverToBoxAdapter(

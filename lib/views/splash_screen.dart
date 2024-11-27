@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_application/constants.dart';
+import 'package:notes_application/views/home_page.dart';
 import 'package:notes_application/views/login_page.dart';
 
 class SplashView extends StatefulWidget {
@@ -69,7 +71,16 @@ class _SplashViewState extends State<SplashView>
   void _delayAndNavigationToNaxtView() {
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return const LoginPage();
+        return FutureBuilder(
+          future: _checkLoginStatus(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return HomePage();
+            } else {
+              return LoginPage();
+            }
+          },
+        );
       }));
     });
   }
@@ -89,54 +100,7 @@ class _SplashViewState extends State<SplashView>
   }
 }
 
-// TODO: ----------------------------------------------------
-
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-    _delayAndNavigationToNaxtView();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: AssetImage(
-                'assets/images/splash.png',
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Notes App',
-              style: TextStyle(
-                color: Color(0xFFea3a3a),
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _delayAndNavigationToNaxtView() {
-    Future.delayed(const Duration(seconds: 5), () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return const LoginPage();
-      }));
-    });
-  }
+Future<bool> _checkLoginStatus() async {
+  final user = FirebaseAuth.instance.currentUser; // ? يحصل على المستخدم الحالي
+  return user != null;
 }

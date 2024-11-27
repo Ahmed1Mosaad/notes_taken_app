@@ -42,7 +42,7 @@ class NoteApp extends StatelessWidget {
             scaffoldBackgroundColor: black,
             fontFamily: 'Lufga',
             brightness: Brightness.dark),
-        home: const HomePage(),
+        home: const SplashView(),
         routes: {
           'LoginPage': (context) {
             return const LoginPage();
@@ -56,7 +56,4 @@ class NoteApp extends StatelessWidget {
     );
   }
 }
-
-
-
 // TODO: build your note application 
