@@ -20,7 +20,6 @@ A simple and efficient notes application built using Flutter.
 
 - **Flutter & Dart:** For building a cross-platform mobile application.
 - **Firebase Authentication:** For secure login and sign-up functionality.
-- **Firebase Firestore:** For storing user notes efficiently.
 - <strong>Hive</strong> <code>local database</code>
 - <strong>MVVM</strong> <code>design pattern</code></li>
 - <strong>Cubit</strong> <code>state management</code></li>
