@@ -30,9 +30,11 @@ class _CustomeTextFormFieldState extends State<CustomeTextFormField> {
       decoration: InputDecoration(
           suffixIcon: IconButton(
             onPressed: () {
-              setState(() {
-                widget.obscureText = !widget.obscureText;
-              });
+              if (widget.showenSuffixIcon) {
+                setState(() {
+                  widget.obscureText = !widget.obscureText;
+                });
+              }
             },
             icon: Icon(
               widget.showenSuffixIcon

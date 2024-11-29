@@ -20,12 +20,12 @@ class IconSearch extends StatelessWidget {
           AudioPlayer().play(
             AssetSource('sounds/button.mp3'),
           );
-          if (icon == Icon(Icons.search)) {
+          if (icon == const Icon(Icons.search)) {
             showSearch(context: context, delegate: CustomSearchDelegate());
           } else {
             FirebaseAuth.instance.signOut();
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return LoginPage();
+              return const LoginPage();
             }));
           }
         },

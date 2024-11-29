@@ -146,7 +146,6 @@ class _LoginPageState extends State<LoginPage> {
                           mode = AutovalidateMode.always;
                         });
                       }
-
                       try {
                         FirebaseAuth auth = FirebaseAuth.instance;
                         UserCredential userCredential =
