@@ -5,10 +5,12 @@ import 'package:notes_application/views/login_page.dart';
 import 'package:notes_application/widgets/custom_search_delegate.dart';
 
 class IconSearch extends StatelessWidget {
+  final bool button;
   final IconData icon;
   const IconSearch({
+    
     super.key,
-    required this.icon,
+    required this.icon,  this.button = true,
   });
 
   @override
@@ -20,7 +22,7 @@ class IconSearch extends StatelessWidget {
           AudioPlayer().play(
             AssetSource('sounds/button.mp3'),
           );
-          if (icon == const Icon(Icons.search)) {
+          if (button) {
             showSearch(context: context, delegate: CustomSearchDelegate());
           } else {
             FirebaseAuth.instance.signOut();

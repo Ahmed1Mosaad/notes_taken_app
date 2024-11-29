@@ -69,8 +69,8 @@ class _HomePageState extends State<HomePage> {
                     const  SliverToBoxAdapter(child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconSearch(icon: FontAwesomeIcons.leftLong,),
-                        IconSearch(icon: Icons.search,),
+                        IconSearch(icon: FontAwesomeIcons.leftLong,button: false,),
+                        IconSearch(icon: Icons.search,button: true,),
                       ],
                     )),
 
